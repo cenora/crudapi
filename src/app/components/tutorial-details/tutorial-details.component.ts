@@ -11,7 +11,7 @@ import { Tutorial } from 'src/app/models/tutorial.model';
 export class TutorialDetailsComponent implements OnInit {
   currentTutorial: Tutorial = {
     title: '',
-    description: '',
+    body: '',
     published: false,
   };
   message = '';
@@ -42,7 +42,7 @@ export class TutorialDetailsComponent implements OnInit {
   updatePublished(status: boolean): void {
     const data = {
       title: this.currentTutorial.title,
-      description: this.currentTutorial.description,
+      description: this.currentTutorial.body,
       published: status,
     };
 
