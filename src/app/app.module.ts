@@ -9,7 +9,7 @@ import { AddTutorialComponent } from './components/add-tutorial/add-tutorial.com
 import { TutorialDetailsComponent } from './components/tutorial-details/tutorial-details.component';
 import { TutorialListComponent } from './components/tutorial-list/tutorial-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { PaginationModule, PaginationConfig } from 'ngx-bootstrap/pagination';
 
 @NgModule({
   declarations: [
@@ -24,9 +24,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxPaginationModule,
+    PaginationModule,
   ],
-  providers: [],
+  providers: [PaginationConfig],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

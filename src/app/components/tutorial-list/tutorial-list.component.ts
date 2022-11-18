@@ -1,3 +1,4 @@
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { Component, OnInit } from '@angular/core';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { TutorialService } from 'src/app/services/tutorial.service';
@@ -9,9 +10,12 @@ import { TutorialService } from 'src/app/services/tutorial.service';
 })
 export class TutorialListComponent implements OnInit {
   tutorials?: Tutorial[];
+  page?: Tutorial[];
   currentTutorial: Tutorial = {};
   currentIndex = -1;
   title = '';
+  maxSize = 5;
+  itemsPerPage = 10;
 
   constructor(private tutorialService: TutorialService) {}
 
@@ -19,10 +23,17 @@ export class TutorialListComponent implements OnInit {
     this.retrieveTutorials();
   }
 
+  pageChanged(event: PageChangedEvent): void {
+    const startItem = (event.page - 1) * event.itemsPerPage;
+    const endItem = event.page * event.itemsPerPage;
+    this.page = this.tutorials?.slice(startItem, endItem);
+  }
+
   retrieveTutorials(): void {
     this.tutorialService.getAll().subscribe(
       (data) => {
         this.tutorials = data;
+        this.page = this.tutorials.slice(0, this.itemsPerPage);
         console.log(data);
       },
       (error) => {

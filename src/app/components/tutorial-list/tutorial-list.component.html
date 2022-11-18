@@ -23,14 +23,19 @@
     <ul class="list-group">
       <li
         class="list-group-item"
-        *ngFor="let tutorial of tutorials; let i = index"
+        *ngFor="let tutorial of page; let i = index"
         [class.active]="i == currentIndex"
         (click)="setActiveTutorial(tutorial, i)"
       >
         {{ tutorial.title }}
       </li>
     </ul>
-
+    <pagination
+      [totalItems]="tutorials!.length"
+      [itemsPerPage]="itemsPerPage"
+      [maxSize]="maxSize"
+      (pageChanged)="pageChanged($event)"
+    ></pagination>
     <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()">
       Remove All
     </button>
