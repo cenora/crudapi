@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Tutorial } from '../models/tutorial.model';
 
 const baseUrl = 'https://jsonplaceholder.typicode.com/posts';
+//const baseUrl = 'https://dummyjson.com/posts';
 
 @Injectable({
   providedIn: 'root',
